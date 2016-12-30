@@ -1,0 +1,9 @@
+* Grade 10 trigonometry game
+I hacked this together to make a simple game for triangle practice. We're learning =sin=, =cos=, and =tan=, as well as the sin and cos laws in math class. I'm trying to learn JavaScript, so I made a simple mobile thing that randomly generates triangles (biased to make a lot of them right-angled) and asks for a side length. Any help or suggestions would be appreciated.
+
+** Things to implement:
+- desktop-friendly version
+- fix the bottom text entry box
+- ask for angles
+- draw the arcs to indicate angles
+- global scoreboard to record high scores
