@@ -1,28 +1,35 @@
-var scaleFactor = 30;
-var initX = 50;
-var initY = 300;
+var scaleFactor = 30;   //how much the lines are scaled up by, answers are unaffected
+var initX = 50;         //initial X offset 
+var initY = 300;        //initial Y offset 
 
-var pointCounter = 0;
-var angleA = 0;
+var pointCounter = 0; //amount of points
+
+var angleA = 0;     //Angles to be randomly generated
 var angleB = 0;
 var angleC = 0;
-var lineA = 0;
+
+var lineA = 0;      //lines to be exrapolated from angles
 var lineB = 0;
 var lineC = 0;
-var ansA = 0;
+
+var ansA = 0;       //final answers to display and compare to user answers
 var ansB = 0;
 var ansC = 0;
-var Aon = 0;
+
+var Aon = 0;        //indicators of which angle is displaying at the moment
 var Bon = 0;
 var Con = 0;
-var userAns = 0;
-var checkAns = 0;
-var wrong = 0;
+
+var userAns = 0;    //the user's answer
+
+var checkAns = 0;   //the correct answer
+
+var wrong = 0;      //if they've been wring that turn, don't give them points
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-function display (string) {
+function display (string) {  //ask user for the answer
     if (string == 'a') {
         drawA();
         checkAns = ansA;
@@ -35,7 +42,7 @@ function display (string) {
         drawC();
         checkAns = ansC;
     }
-    document.getElementById('question').innerHTML = "Find the side length of " + string + "  (" + checkAns + ')';
+    document.getElementById('question').innerHTML = "Find the side length of " + string; //only for debugging + "  (" + checkAns + ')';
 }
 
 function dtr (degree) { //degrees to radians
@@ -254,4 +261,4 @@ function checkAnswer () {
     document.getElementById('answer').blur();
 }
 
-drawTriangle();
+drawTriangle();    //initially draw triangle when site is loaded
