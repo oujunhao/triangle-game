@@ -55,13 +55,6 @@ function getRand (highest) {
     return calcnum;
 }
 
-function newGame () {
-    if (confirm ("Are you sure you want to reset everything?")) {
-        pointCounter = 0;
-        newQuestion();
-    }
-}
-
 function newQuestion () {
     do {
         angleA = getRand(70);
