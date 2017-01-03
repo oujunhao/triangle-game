@@ -6,4 +6,5 @@ I hacked this together to make a simple game for triangle practice. We're learni
 - fix the bottom text entry box
 - ask for angles
 - draw the arcs to indicate angles
+- try out the Onsen UI framework
 - global scoreboard to record high scores
