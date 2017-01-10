@@ -2,7 +2,11 @@ var scaleFactor = 30;   //how much the lines are scaled up by, answers are unaff
 var initX = 50;         //initial X offset 
 var initY = 300;        //initial Y offset 
 
-var pointCounter = 0; //amount of points
+ if ( localStorage.getItem('pointCounter') ) {
+     var pointCounter = localStorage.getItem('pointCounter'); 
+ } else {
+     var pointCounter = 0;    //Grab point from local storage if there is any, otherwise initialize variable
+ }
 
 var angleA = 0;     //Angles to be randomly generated
 var angleB = 0;
@@ -24,7 +28,7 @@ var userAns = 0;    //the user's answer
 
 var checkAns = 0;   //the correct answer
 
-var wrong = 0;      //if they've been wring that turn, don't give them points
+var wrong = 0;      //if they've been wrong that turn, don't give them points
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
@@ -241,6 +245,7 @@ function checkAnswer () {
         alert("You are right!");
         if (wrong != 1) {
             pointCounter += 1;
+	    localStorage.setItem('pointCounter', pointCounter);
             drawTriangle();
         } else {
             drawTriangle();
