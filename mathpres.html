@@ -26,11 +26,12 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Trigonometry Practice Game</h1><h2 class="author">Aaron Olsen</h2><h2 class="date">Stratford Central Secondary School</h2><p class="date">Created: 2017-01-10 Tue 16:30</p>
+<section id="sec-title-slide"><h1 class="title">Trigonometry Practice Game</h1><h2 class="date">www.theolsens.ca/aaron</h2><p class="date">Created: 2017-01-12 Thu 21:22</p>
 </section>
+
 <section>
-<section id="slide-org411cccd">
-<h2 id="org411cccd">Initialize variables</h2>
+<section id="slide-org531f427">
+<h2 id="org531f427">Initialize variables</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">var</span> <span style="color: #6c71c4;">scaleFactor</span> = <span style="color: #268bd2;">30</span>;   <span style="color: #586e75; font-style: italic;">//</span><span style="color: #586e75; font-style: italic;">how much the lines are scaled up by, answers are unaffected</span>
@@ -63,36 +64,11 @@
 <span style="color: #859900;">var</span> <span style="color: #6c71c4;">ctx</span> = canvas.getContext<span style="color: #839496;">(</span><span style="color: #2aa198;">'2d'</span><span style="color: #839496;">)</span>;
 </pre>
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-org5607039">
-<h2 id="org5607039">Question to ask:</h2>
-<div class="org-src-container">
-
-<pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">display</span> <span style="color: #839496;">(</span><span style="color: #6c71c4;">string</span><span style="color: #839496;">)</span> <span style="color: #839496;">{</span>  <span style="color: #586e75; font-style: italic;">//</span><span style="color: #586e75; font-style: italic;">ask user for the answer</span>
-    <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>string == <span style="color: #2aa198;">'a'</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
-        drawLineA<span style="color: #b58900;">()</span>;
-        checkAns = ansA;
-    <span style="color: #2aa198;">}</span>
-    <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>string == <span style="color: #2aa198;">'b'</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
-        drawLineB<span style="color: #b58900;">()</span>;
-        checkAns = ansB;
-    <span style="color: #2aa198;">}</span>
-    <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>string == <span style="color: #2aa198;">'c'</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
-        drawLineC<span style="color: #b58900;">()</span>;
-        checkAns = ansC;
-    <span style="color: #2aa198;">}</span>
-    document.getElementById<span style="color: #2aa198;">(</span><span style="color: #2aa198;">'question'</span><span style="color: #2aa198;">)</span>.innerHTML = <span style="color: #2aa198;">"Find the side length of "</span> + string;
-<span style="color: #839496;">}</span>
-</pre>
-</div>
-</section>
-</section>
-<section>
-<section id="slide-org096a4a2">
-<h2 id="org096a4a2">Make triangle parameters</h2>
+<section id="slide-orga0646ae">
+<h2 id="orga0646ae">Make triangle parameters</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">newQuestion</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
@@ -113,8 +89,8 @@
 </pre>
 </div>
 </section>
-<section id="slide-org9fc6ef7">
-<h3 id="org9fc6ef7"></h3>
+<section id="slide-orgcacd2c7">
+<h3 id="orgcacd2c7"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">calcLines</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
@@ -135,8 +111,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgd595f25">
-<h2 id="orgd595f25">Draw the triangle</h2>
+<section id="slide-org2981536">
+<h2 id="org2981536">Draw the triangle</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">drawTriangle</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
@@ -164,8 +140,19 @@
 </pre>
 </div>
 </section>
-<section id="slide-org62212e8">
-<h3 id="org62212e8"></h3>
+<section id="slide-org0133ac0">
+<h3 id="org0133ac0">Convert degrees to radians</h3>
+<div class="org-src-container">
+
+<pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">dtr</span> <span style="color: #839496;">(</span><span style="color: #6c71c4;">degree</span><span style="color: #839496;">)</span> <span style="color: #839496;">{</span> <span style="color: #586e75; font-style: italic;">//</span><span style="color: #586e75; font-style: italic;">degrees to radians</span>
+    <span style="color: #859900;">var</span> <span style="color: #6c71c4;">pi</span> = Math.PI;
+    <span style="color: #859900;">return</span> degree * <span style="color: #2aa198;">(</span>pi/<span style="color: #268bd2;">180</span><span style="color: #2aa198;">)</span>;
+<span style="color: #839496;">}</span>
+</pre>
+</div>
+</section>
+<section id="slide-orge5b19af">
+<h3 id="orge5b19af"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">drawAngles</span> <span style="color: #839496;">(</span><span style="color: #6c71c4;">amount</span><span style="color: #839496;">)</span> <span style="color: #839496;">{</span>
@@ -184,37 +171,45 @@
             drawAngleC<span style="color: #859900;">()</span>;
             Con = <span style="color: #268bd2;">1</span>;
         <span style="color: #b58900;">}</span> <span style="color: #859900;">else</span> <span style="color: #b58900;">{</span>
-            Bon = <span style="color: #268bd2;">0</span>;
-            drawAngleC<span style="color: #859900;">()</span>;
-            Con = <span style="color: #268bd2;">1</span>;
             drawAngleA<span style="color: #859900;">()</span>;
             Aon = <span style="color: #268bd2;">1</span>;
-        <span style="color: #b58900;">}</span>
-    <span style="color: #2aa198;">}</span> <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>amount == <span style="color: #268bd2;">1</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
-        chooser = getRand<span style="color: #b58900;">(</span><span style="color: #268bd2;">3</span><span style="color: #b58900;">)</span>;
-        <span style="color: #859900;">if</span> <span style="color: #b58900;">(</span>chooser == <span style="color: #268bd2;">1</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
-            drawAngleA<span style="color: #859900;">()</span>;
-            Aon = <span style="color: #268bd2;">1</span>;
-            Bon = <span style="color: #268bd2;">0</span>;
-            Con = <span style="color: #268bd2;">0</span>;
-        <span style="color: #b58900;">}</span> <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> <span style="color: #b58900;">(</span>chooser == <span style="color: #268bd2;">2</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
-            Aon = <span style="color: #268bd2;">0</span>;
-            drawAngleB<span style="color: #859900;">()</span>;
-            Bon = <span style="color: #268bd2;">1</span>;
-            Con = <span style="color: #268bd2;">1</span>;
-        <span style="color: #b58900;">}</span> <span style="color: #859900;">else</span> <span style="color: #b58900;">{</span>
-            Aon = <span style="color: #268bd2;">0</span>;
             Bon = <span style="color: #268bd2;">0</span>;
             drawAngleC<span style="color: #859900;">()</span>;
             Con = <span style="color: #268bd2;">1</span>;
         <span style="color: #b58900;">}</span>
     <span style="color: #2aa198;">}</span>
-<span style="color: #839496;">}</span>
 </pre>
 </div>
 </section>
-<section id="slide-orgf1e990b">
-<h3 id="orgf1e990b"></h3>
+<section id="slide-org2ff6f11">
+<h3 id="org2ff6f11"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-js"><span style="color: #859900;">else</span> <span style="color: #859900;">if</span> <span style="color: #839496;">(</span>amount == <span style="color: #268bd2;">1</span><span style="color: #839496;">)</span> <span style="color: #839496;">{</span>
+        chooser = getRand<span style="color: #2aa198;">(</span><span style="color: #268bd2;">3</span><span style="color: #2aa198;">)</span>;
+        <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>chooser == <span style="color: #268bd2;">1</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+            drawAngleA<span style="color: #b58900;">()</span>;
+            Aon = <span style="color: #268bd2;">1</span>;
+            Bon = <span style="color: #268bd2;">0</span>;
+            Con = <span style="color: #268bd2;">0</span>;
+        <span style="color: #2aa198;">}</span> <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>chooser == <span style="color: #268bd2;">2</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+            Aon = <span style="color: #268bd2;">0</span>;
+            drawAngleB<span style="color: #b58900;">()</span>;
+            Bon = <span style="color: #268bd2;">1</span>;
+            Con = <span style="color: #268bd2;">1</span>;
+        <span style="color: #2aa198;">}</span> <span style="color: #859900;">else</span> <span style="color: #2aa198;">{</span>
+            Aon = <span style="color: #268bd2;">0</span>;
+            Bon = <span style="color: #268bd2;">0</span>;
+            drawAngleC<span style="color: #b58900;">()</span>;
+            Con = <span style="color: #268bd2;">1</span>;
+        <span style="color: #2aa198;">}</span>
+    <span style="color: #839496;">}</span>
+<span style="color: #dc322f;">}</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgc37e65d">
+<h3 id="orgc37e65d"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">drawMarks</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
@@ -229,7 +224,8 @@
         <span style="color: #b58900;">}</span> <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> <span style="color: #b58900;">(</span>Bon == <span style="color: #268bd2;">1</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
             display<span style="color: #859900;">(</span><span style="color: #2aa198;">'b'</span><span style="color: #859900;">)</span>; <span style="color: #586e75; font-style: italic;">//</span><span style="color: #586e75; font-style: italic;">Ask for b</span>
             drawLineC<span style="color: #859900;">()</span>;
-            drawLineA<span style="color: #859900;">()</span>;<span style="color: #b58900;">}</span> <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> <span style="color: #b58900;">(</span>Con == <span style="color: #268bd2;">1</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+            drawLineA<span style="color: #859900;">()</span>;
+       <span style="color: #b58900;">}</span> <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> <span style="color: #b58900;">(</span>Con == <span style="color: #268bd2;">1</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
             display<span style="color: #859900;">(</span><span style="color: #2aa198;">'c'</span><span style="color: #859900;">)</span>; <span style="color: #586e75; font-style: italic;">//</span><span style="color: #586e75; font-style: italic;">Ask for c</span>
             drawLineB<span style="color: #859900;">()</span>;
             drawLineA<span style="color: #859900;">()</span>;
@@ -252,24 +248,14 @@
 </section>
 </section>
 <section>
-<section id="slide-orgcf61338">
-<h2 id="orgcf61338">Convert degrees to radians</h2>
-<p>
-function dtr (degree) { //degrees to radians
-    var pi = Math.PI;
-    return degree * (pi/180);
-}
-</p>
-</section>
-</section>
-<section>
-<section id="slide-orgd70b3ee">
-<h2 id="orgd70b3ee">Draw angle measurements</h2>
+<section id="slide-orgeead574">
+<h2 id="orgeead574">Draw angle measurements</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">drawAngleA</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
     ctx.font=<span style="color: #2aa198;">"15px Verdana"</span>;
-    ctx.fillText<span style="color: #2aa198;">(</span>angleA + <span style="color: #2aa198;">'&#176;'</span>, initX + lineB * Math.cos<span style="color: #b58900;">(</span>dtr<span style="color: #859900;">(</span>angleC<span style="color: #859900;">)</span><span style="color: #b58900;">)</span>, initY - lineB * Math.sin<span style="color: #b58900;">(</span>dtr<span style="color: #859900;">(</span>angleC<span style="color: #859900;">)</span><span style="color: #b58900;">)</span> - <span style="color: #268bd2;">5</span><span style="color: #2aa198;">)</span>;
+    ctx.fillText<span style="color: #2aa198;">(</span>angleA + <span style="color: #2aa198;">'&#176;'</span>, initX + lineB * Math.cos<span style="color: #b58900;">(</span>dtr<span style="color: #859900;">(</span>angleC<span style="color: #859900;">)</span><span style="color: #b58900;">)</span>,
+                          initY - lineB * Math.sin<span style="color: #b58900;">(</span>dtr<span style="color: #859900;">(</span>angleC<span style="color: #859900;">)</span><span style="color: #b58900;">)</span> - <span style="color: #268bd2;">5</span><span style="color: #2aa198;">)</span>;
 <span style="color: #839496;">}</span>
 
 <span style="color: #859900;">function</span> <span style="color: #b58900;">drawAngleB</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
@@ -297,8 +283,8 @@ function dtr (degree) { //degrees to radians
 </section>
 </section>
 <section>
-<section id="slide-orga98c616">
-<h2 id="orga98c616">Draw line measurements</h2>
+<section id="slide-orgfa6b0db">
+<h2 id="orgfa6b0db">Draw line measurements</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">drawLineA</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
@@ -308,20 +294,48 @@ function dtr (degree) { //degrees to radians
 
 <span style="color: #859900;">function</span> <span style="color: #b58900;">drawLineB</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
     ctx.font=<span style="color: #2aa198;">"20px Verdana"</span>;
-    ctx.fillText<span style="color: #2aa198;">(</span>ansB, initX - <span style="color: #268bd2;">30</span> + <span style="color: #b58900;">(</span>lineB * Math.cos<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span>/<span style="color: #268bd2;">2</span>, initY - <span style="color: #b58900;">(</span>lineB * Math.sin<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span>/<span style="color: #268bd2;">2</span><span style="color: #2aa198;">)</span>;
+    ctx.fillText<span style="color: #2aa198;">(</span>ansB, initX - <span style="color: #268bd2;">30</span> + <span style="color: #b58900;">(</span>lineB * Math.cos<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span>/<span style="color: #268bd2;">2</span>,
+                           initY - <span style="color: #b58900;">(</span>lineB * Math.sin<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span>/<span style="color: #268bd2;">2</span><span style="color: #2aa198;">)</span>;
 <span style="color: #839496;">}</span>
 
 <span style="color: #859900;">function</span> <span style="color: #b58900;">drawLineC</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
     ctx.font=<span style="color: #2aa198;">"20px Verdana"</span>;
-    ctx.fillText<span style="color: #2aa198;">(</span>ansC, initX + <span style="color: #b58900;">(</span>lineB * Math.cos<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span> + <span style="color: #b58900;">(</span><span style="color: #859900;">(</span><span style="color: #268bd2;">(</span>initX + lineA<span style="color: #268bd2;">)</span> - <span style="color: #268bd2;">(</span>initX + lineB * Math.cos<span style="color: #839496;">(</span>dtr<span style="color: #2aa198;">(</span>angleC<span style="color: #2aa198;">)</span><span style="color: #839496;">)</span><span style="color: #268bd2;">)</span><span style="color: #859900;">)</span> / <span style="color: #268bd2;">2</span><span style="color: #b58900;">)</span> + <span style="color: #268bd2;">5</span>,  initY - <span style="color: #b58900;">(</span>lineB * Math.sin<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span>/<span style="color: #268bd2;">2</span><span style="color: #2aa198;">)</span>;
+    ctx.fillText<span style="color: #2aa198;">(</span>ansC, initX + <span style="color: #b58900;">(</span>lineB * Math.cos<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span> +
+  <span style="color: #b58900;">(</span><span style="color: #859900;">(</span><span style="color: #268bd2;">(</span>initX + lineA<span style="color: #268bd2;">)</span> - <span style="color: #268bd2;">(</span>initX + lineB * Math.cos<span style="color: #839496;">(</span>dtr<span style="color: #2aa198;">(</span>angleC<span style="color: #2aa198;">)</span><span style="color: #839496;">)</span><span style="color: #268bd2;">)</span><span style="color: #859900;">)</span> / <span style="color: #268bd2;">2</span><span style="color: #b58900;">)</span> + <span style="color: #268bd2;">5</span>,
+                             initY - <span style="color: #b58900;">(</span>lineB * Math.sin<span style="color: #859900;">(</span>dtr<span style="color: #268bd2;">(</span>angleC<span style="color: #268bd2;">)</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span>/<span style="color: #268bd2;">2</span><span style="color: #2aa198;">)</span>;
+<span style="color: #839496;">}</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2861607">
+<h2 id="org2861607">Question to ask:</h2>
+<div class="org-src-container">
+
+<pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">display</span> <span style="color: #839496;">(</span><span style="color: #6c71c4;">string</span><span style="color: #839496;">)</span> <span style="color: #839496;">{</span>  <span style="color: #586e75; font-style: italic;">//</span><span style="color: #586e75; font-style: italic;">ask user for the answer</span>
+    <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>string == <span style="color: #2aa198;">'a'</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+        drawLineA<span style="color: #b58900;">()</span>;
+        checkAns = ansA;
+    <span style="color: #2aa198;">}</span>
+    <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>string == <span style="color: #2aa198;">'b'</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+        drawLineB<span style="color: #b58900;">()</span>;
+        checkAns = ansB;
+    <span style="color: #2aa198;">}</span>
+    <span style="color: #859900;">if</span> <span style="color: #2aa198;">(</span>string == <span style="color: #2aa198;">'c'</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+        drawLineC<span style="color: #b58900;">()</span>;
+        checkAns = ansC;
+    <span style="color: #2aa198;">}</span>
+    document.getElementById<span style="color: #2aa198;">(</span><span style="color: #2aa198;">'question'</span><span style="color: #2aa198;">)</span>.innerHTML = <span style="color: #2aa198;">"Find the side length of "</span> + string;
 <span style="color: #839496;">}</span>
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org33d0ad5">
-<h2 id="org33d0ad5">Check if their answer is right</h2>
+<section id="slide-org0b99f1f">
+<h2 id="org0b99f1f">Check if their answer is right</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"><span style="color: #859900;">function</span> <span style="color: #b58900;">checkAnswer</span> <span style="color: #839496;">()</span> <span style="color: #839496;">{</span>
@@ -345,6 +359,60 @@ function dtr (degree) { //degrees to radians
 <span style="color: #839496;">}</span>
 </pre>
 </div>
+</section>
+</section>
+<section>
+<section id="slide-orga3add25">
+<h2 id="orga3add25">Layout</h2>
+<div class="org-src-container">
+
+<pre  class="src src-html">&lt;<span style="color: #859900;">!DOCTYPE</span> html&gt;
+&lt;<span style="color: #b58900;">html</span>&gt;
+&lt;<span style="color: #b58900;">head</span>&gt;
+    &lt;<span style="color: #b58900;">meta</span> <span style="color: #6c71c4;">charset</span>=<span style="color: #2aa198;">"utf-8"</span> /&gt;
+    &lt;<span style="color: #b58900;">meta</span> <span style="color: #6c71c4;">name</span>=<span style="color: #2aa198;">"viewport"</span> <span style="color: #6c71c4;">content</span>=<span style="color: #2aa198;">"width=device-width, initial-scale=1 maximum-scale=1, user-scalable=0"</span>&gt;
+    &lt;<span style="color: #b58900;">link</span> <span style="color: #6c71c4;">rel</span>=<span style="color: #2aa198;">"stylesheet"</span> <span style="color: #6c71c4;">href</span>=<span style="color: #2aa198;">"http://www.w3schools.com/lib/w3.css"</span>&gt;
+    &lt;<span style="color: #b58900;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Aaron's game</span>&lt;/<span style="color: #b58900;">title</span>&gt;
+    &lt;<span style="color: #b58900;">style</span>&gt;
+        * { padding: 0; margin: 0; }
+        canvas { width: 140%; height: 45%; background:transparent; display: block; margin: 0 auto; }
+    &lt;/<span style="color: #b58900;">style</span>&gt;
+&lt;/<span style="color: #b58900;">head</span>&gt;
+&lt;<span style="color: #b58900;">body</span>&gt;
+
+&lt;<span style="color: #b58900;">canvas</span> <span style="color: #6c71c4;">id</span>=<span style="color: #2aa198;">"canvas"</span> <span style="color: #6c71c4;">width</span>=<span style="color: #2aa198;">"500"</span> <span style="color: #6c71c4;">height</span>=<span style="color: #2aa198;">"350"</span>&gt;&lt;/<span style="color: #b58900;">canvas</span>&gt;
+
+&lt;<span style="color: #b58900;">div</span>&gt;
+    &lt;<span style="color: #b58900;">p</span> <span style="color: #6c71c4;">id</span>=<span style="color: #2aa198;">"question"</span>&gt;&lt;/<span style="color: #b58900;">p</span>&gt;
+    &lt;<span style="color: #b58900;">p</span>&gt;(to the nearest whole number)&lt;/<span style="color: #b58900;">p</span>&gt;
+    &lt;<span style="color: #b58900;">button</span> <span style="color: #6c71c4;">style</span>=<span style="color: #2aa198;">"width:50%; height:40px"</span> <span style="color: #6c71c4;">onclick</span>=<span style="color: #2aa198;">"checkAnswer()"</span>&gt;Check Answer&lt;/<span style="color: #b58900;">button</span>&gt;
+    &lt;<span style="color: #b58900;">button</span> <span style="color: #6c71c4;">style</span>=<span style="color: #2aa198;">"width:50%; height:40px; float: right;"</span> <span style="color: #6c71c4;">onclick</span>=<span style="color: #2aa198;">"drawTriangle()"</span>&gt;New Triangle&lt;/<span style="color: #b58900;">button</span>&gt;
+&lt;/<span style="color: #b58900;">div</span>&gt;
+
+
+&lt;<span style="color: #b58900;">input</span> <span style="color: #6c71c4;">style</span>=<span style="color: #2aa198;">"width:100%; height:60px; position:absolute; bottom:0; left:0;"</span> <span style="color: #6c71c4;">id</span>=<span style="color: #2aa198;">"answer"</span> <span style="color: #6c71c4;">type</span>=<span style="color: #2aa198;">"text"</span>
+       <span style="color: #6c71c4;">inputmode</span>=<span style="color: #2aa198;">"numeric"</span> <span style="color: #6c71c4;">pattern</span>=<span style="color: #2aa198;">"[0-9]*"</span> <span style="color: #6c71c4;">placeholder</span>=<span style="color: #2aa198;">"Your answer here"</span>
+       <span style="color: #6c71c4;">onkeypress</span>=<span style="color: #2aa198;">"Javascript: if (event.keyCode == 13 || event.keyCode == 9)</span>
+<span style="color: #2aa198;">                   {event.preventDefault(); checkAnswer();}"</span>/&gt;
+
+&lt;<span style="color: #b58900;">script</span> <span style="color: #6c71c4;">src</span>=<span style="color: #2aa198;">"math.js"</span>&gt;&lt;/<span style="color: #b58900;">script</span>&gt;
+
+&lt;/<span style="color: #b58900;">body</span>&gt;
+&lt;/<span style="color: #b58900;">html</span>&gt;
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org21d21d2">
+<h2 id="org21d21d2">Licensed under the GNU GPL 3.0</h2>
+<p>
+Anybody has the right to run, study, modify, and redistribute the software
+</p>
+
+<p>
+Source code available at: <a href="https://github.com/oujunhao/triangle-game">github.com/oujunhao/triangle-game</a>
+</p>
 </section>
 </section>
 </div>

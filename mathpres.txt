@@ -1,4 +1,4 @@
-#+OPTIONS: toc:nil num:nil
+#+OPTIONS: toc:nil num:nil author:nil
 #+OPTIONS: reveal_width:1200 reveal_height:800
 #+REVEAL_MARGIN: 0.2
 #+REVEAL_TRANS: slide
@@ -7,8 +7,8 @@
 #+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
 
 #+TITLE: Trigonometry Practice Game
-#+AUTHOR: Aaron Olsen
-#+DATE: Stratford Central Secondary School
+#+DATE: www.theolsens.ca/aaron
+
 * Initialize variables
 #+BEGIN_SRC js
 var scaleFactor = 30;   //how much the lines are scaled up by, answers are unaffected
@@ -39,25 +39,6 @@ var wrong = 0;      //if they've been wrong that turn, don't give them points
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
-#+END_SRC
-
-* Question to ask:
-#+BEGIN_SRC js
-function display (string) {  //ask user for the answer
-    if (string == 'a') {
-        drawLineA();
-        checkAns = ansA;
-    }
-    if (string == 'b') {
-        drawLineB();
-        checkAns = ansB;
-    }
-    if (string == 'c') {
-        drawLineC();
-        checkAns = ansC;
-    }
-    document.getElementById('question').innerHTML = "Find the side length of " + string;
-}
 #+END_SRC
 * Make triangle parameters
 #+BEGIN_SRC js
@@ -118,6 +99,13 @@ function drawTriangle () {
     drawMarks(); //draw the angle and line mearures
 }
 #+END_SRC
+** Convert degrees to radians
+#+BEGIN_SRC js
+function dtr (degree) { //degrees to radians
+    var pi = Math.PI;
+    return degree * (pi/180);
+}
+#+END_SRC
 ** 
 #+BEGIN_SRC js
 function drawAngles (amount) {
@@ -136,13 +124,17 @@ function drawAngles (amount) {
             drawAngleC();
             Con = 1;
         } else {
+            drawAngleA();
+            Aon = 1;
             Bon = 0;
             drawAngleC();
             Con = 1;
-            drawAngleA();
-            Aon = 1;
         }
-    } else if (amount == 1) {
+    }
+#+END_SRC
+**  
+#+BEGIN_SRC js
+else if (amount == 1) {
         chooser = getRand(3);
         if (chooser == 1) {
             drawAngleA();
@@ -177,7 +169,8 @@ function drawMarks () {
         } else if (Bon == 1) {
             display('b'); //Ask for b
             drawLineC();
-            drawLineA();} else if (Con == 1) {
+            drawLineA();
+       } else if (Con == 1) {
             display('c'); //Ask for c
             drawLineB();
             drawLineA();
@@ -196,16 +189,12 @@ function drawMarks () {
     }
 }
 #+END_SRC
-* Convert degrees to radians
-function dtr (degree) { //degrees to radians
-    var pi = Math.PI;
-    return degree * (pi/180);
-}
 * Draw angle measurements
 #+BEGIN_SRC js
 function drawAngleA () {
     ctx.font="15px Verdana";
-    ctx.fillText(angleA + '°', initX + lineB * Math.cos(dtr(angleC)), initY - lineB * Math.sin(dtr(angleC)) - 5);
+    ctx.fillText(angleA + '°', initX + lineB * Math.cos(dtr(angleC)),
+                          initY - lineB * Math.sin(dtr(angleC)) - 5);
 }
 
 function drawAngleB () {
@@ -238,12 +227,34 @@ function drawLineA () {
 
 function drawLineB () {
     ctx.font="20px Verdana";
-    ctx.fillText(ansB, initX - 30 + (lineB * Math.cos(dtr(angleC)))/2, initY - (lineB * Math.sin(dtr(angleC)))/2);
+    ctx.fillText(ansB, initX - 30 + (lineB * Math.cos(dtr(angleC)))/2,
+                           initY - (lineB * Math.sin(dtr(angleC)))/2);
 }
 
 function drawLineC () {
     ctx.font="20px Verdana";
-    ctx.fillText(ansC, initX + (lineB * Math.cos(dtr(angleC))) + (((initX + lineA) - (initX + lineB * Math.cos(dtr(angleC)))) / 2) + 5,  initY - (lineB * Math.sin(dtr(angleC)))/2);
+    ctx.fillText(ansC, initX + (lineB * Math.cos(dtr(angleC))) +
+  (((initX + lineA) - (initX + lineB * Math.cos(dtr(angleC)))) / 2) + 5,
+                             initY - (lineB * Math.sin(dtr(angleC)))/2);
+}
+#+END_SRC
+
+* Question to ask:
+#+BEGIN_SRC js
+function display (string) {  //ask user for the answer
+    if (string == 'a') {
+        drawLineA();
+        checkAns = ansA;
+    }
+    if (string == 'b') {
+        drawLineB();
+        checkAns = ansB;
+    }
+    if (string == 'c') {
+        drawLineC();
+        checkAns = ansC;
+    }
+    document.getElementById('question').innerHTML = "Find the side length of " + string;
 }
 #+END_SRC
 * Check if their answer is right
@@ -268,3 +279,43 @@ function checkAnswer () {
     document.getElementById('answer').blur();
 }
 #+END_SRC
+* Layout
+#+BEGIN_SRC html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <title>Aaron's game</title>
+    <style>
+        * { padding: 0; margin: 0; }
+        canvas { width: 140%; height: 45%; background:transparent; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas" width="500" height="350"></canvas>
+
+<div>
+    <p id="question"></p>
+    <p>(to the nearest whole number)</p>
+    <button style="width:50%; height:40px" onclick="checkAnswer()">Check Answer</button>
+    <button style="width:50%; height:40px; float: right;" onclick="drawTriangle()">New Triangle</button>
+</div>
+
+
+<input style="width:100%; height:60px; position:absolute; bottom:0; left:0;" id="answer" type="text"
+       inputmode="numeric" pattern="[0-9]*" placeholder="Your answer here"
+       onkeypress="Javascript: if (event.keyCode == 13 || event.keyCode == 9)
+                   {event.preventDefault(); checkAnswer();}"/>
+
+<script src="math.js"></script>
+
+</body>
+</html>
+#+END_SRC
+* Licensed under the GNU GPL 3.0
+Anybody has the right to run, study, modify, and redistribute the software
+
+Source code available at: [[https://github.com/oujunhao/triangle-game][github.com/oujunhao/triangle-game]]
