@@ -4,7 +4,7 @@
 #+REVEAL_TRANS: slide
 #+REVEAL_MIN_SCALE: 0.5
 #+REVEAL_MAX_SCALE: 2.5
-#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/reveal.js/3.0.0/
 
 #+TITLE: Trigonometry Practice Game
 #+DATE: www.theolsens.ca/aaron
