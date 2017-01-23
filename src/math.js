@@ -33,6 +33,13 @@ var wrong = 0;      //if they've been wrong that turn, don't give them points
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
+function resetScore() {
+    if (confirm ("Are you sure you want to reset your score?")) {
+        pointCounter = 0;
+        drawTriangle();
+    }
+}
+
 function display (string) {  //ask user for the answer
     if (string == 'a') {
         drawA();
