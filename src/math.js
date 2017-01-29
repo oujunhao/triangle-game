@@ -3,7 +3,7 @@ var initX = 50;         //initial X offset
 var initY = 300;        //initial Y offset 
 
 if ( localStorage.getItem('pointCounter') ) {
-    var pointCounter = localStorage.getItem('pointCounter'); 
+    var pointCounter = parseInt(localStorage.getItem('pointCounter')); 
 } else {
     var pointCounter = 0;    //Grab point from local storage if there is any, otherwise initialize variable
 }
@@ -36,6 +36,7 @@ var ctx = canvas.getContext('2d');
 function resetScore() {
     if (confirm ("Are you sure you want to reset your score?")) {
         pointCounter = 0;
+	localStorage.setItem('pointCounter', 0); //update points and save
         drawTriangle();
     }
 }
@@ -245,13 +246,20 @@ function drawC () {
     ctx.fillText('c', initX + (lineB * Math.cos(dtr(angleC))) + (((initX + lineA) - (initX + lineB * Math.cos(dtr(angleC)))) / 2) + 5,  initY - (lineB * Math.sin(dtr(angleC)))/2);
 }
 
+function abs (check) {
+    if (check < 0) {
+        check = -check;
+    } 
+    return check;
+}
+
 function checkAnswer () {
     userAns = parseInt(document.getElementById('answer').value);
-    if (userAns == checkAns) {
+    if (abs(userAns - checkAns) < 2) {
         alert("You are right!");
         if (wrong != 1) {
             pointCounter += 1;
-	          localStorage.setItem('pointCounter', pointCounter); //update points and save
+	    localStorage.setItem('pointCounter',pointCounter); //update points and save
             drawTriangle();
         } else {
             drawTriangle();
